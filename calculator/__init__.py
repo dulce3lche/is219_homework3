@@ -20,7 +20,7 @@ This code demonstrates effective use of object-oriented and functional programmi
 '''
 
 # Import necessary modules and classes
-from calculator.calculations import Calculations  # Manages history of calculations
+from calculator.calculations import Calculations  # Manages data storage of calculations
 from calculator.operations import add, subtract, multiply, divide  # Arithmetic operations
 from calculator.calculation import Calculation  # Represents a single calculation
 from decimal import Decimal  # For high-precision arithmetic
@@ -29,10 +29,10 @@ from typing import Callable  # For type hinting callable objects
 # Definition of the Calculator class
 class Calculator:
     @staticmethod
-    def _perform_operation(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]) -> Decimal:
+    def _perform_operation(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]) -> Decimal: #Callable is a type in Python, it specifies the parameters are decimals and returns a decimal
         """Create and perform a calculation, then return the result."""
         # Create a Calculation object using the static create method, passing in operands and the operation
-        calculation = Calculation.create(a, b, operation)
+        calculation: Calculation = Calculation.create(a, b, operation)
         # Add the calculation to the history managed by the Calculations class
         Calculations.add_calculation(calculation)
         # Perform the calculation and return the result
