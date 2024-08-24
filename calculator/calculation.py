@@ -11,3 +11,7 @@ class Calculation:
     def perform(self) -> Decimal:
         # Call the stored operation with a and b
         return self.operation(self.a, self.b)
+
+    @staticmethod
+    def create(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]):
+        return Calculation(a, b, operation)

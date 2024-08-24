@@ -6,21 +6,21 @@ from decimal import Decimal # For precise decimal arithmetic
 class Calculator:
     @staticmethod
     def perform_operation(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]) -> Decimal:
-        calculation = Calculation(a, b, operation)
-        return calculation.get_result()
+        calculation = Calculation.create(a, b, operation)
+        return calculation.perform() # Perform the calculation and return the result()
 
     @staticmethod
     def add(a: Decimal,b: Decimal) -> Decimal:
-        return Calculation.perform_operation(a, b, add)
+        return Calculator.perform_operation(a, b, add)
 
     @staticmethod
     def subtract(a: Decimal,b: Decimal) -> Decimal:
-        return Calculation.perform_operation(a, b, subtract)
+        return Calculator.perform_operation(a, b, subtract)
 
     @staticmethod
     def multiply (a: Decimal,b: Decimal) -> Decimal:
-        return Calculation.perform_operation(a, b, multiply)
+        return Calculator.perform_operation(a, b, multiply)
 
     @staticmethod
     def divide(a: Decimal,b: Decimal) -> Decimal:
-        return Calculation.perform_operation(a, b, divide)
+        return Calculator.perform_operation(a, b, divide)
