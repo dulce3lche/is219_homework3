@@ -1,14 +1,18 @@
-from typing import List
+from typing import Callable, List
+
+from calculator.calculation import Calculation
 
 class CalculationHistory:
-    def __init__(self):
-        self.history = []
+    history = []
 
-    def add_calculation(self, calculation: str, result: str):
-        self.history.append((calculation, result))
-
-    def get_history(self) -> List[str]:
-        return [f"{calculation} = {result}" for calculation, result in self.history]
-
-    def clear_history(self):
-        self.history = []
+    @classmethod
+    def add_calculation(cls, calculation: Calculation):
+        cls.history.append(calculation)
+        
+    @classmethod
+    def get_history(cls) -> List[Calculation]:
+        return cls.history
+        
+    @classmethod
+    def clear_history(cls):
+        cls.history = []
