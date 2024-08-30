@@ -1,6 +1,6 @@
 from decimal import Decimal
 from operations import add, subtract, multiply, divide
-from calculator import Calculation
+from calculator.operations import Calculation
 
 def test_calculation_add():
     calculation = Calculation(Decimal('10'), Decimal('5'), add)
