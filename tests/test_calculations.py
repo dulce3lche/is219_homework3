@@ -1,8 +1,6 @@
-# Correct the import order by placing standard library imports before third-party library imports,
-# adhering to PEP 8 guidelines for import ordering.
+"""Unit tests for the calculations module."""
 from decimal import Decimal
 import pytest
-
 # Import Calculation and Calculations classes from the calculator package,
 # assuming these are the correct paths following Python's package and module naming conventions.
 from calculator.calculations import CalculationHistory
@@ -19,8 +17,8 @@ def setup_calculations():
     # Add sample calculations to the history to set up a known state for testing.
     # These calculations represent typical use cases and allow tests to verify that
     # the history functionality is working as expected.
-    CalculationHistory().add_calculation(Calculation()(Decimal('10'), Decimal('5'), 'add'))
-    CalculationHistory.add_calculation(Calculation()(Decimal('20'), Decimal('3'), 'subtract'))
+    CalculationHistory.add_calculation(Calculation(Decimal('10'), Decimal('5'), 'add'))
+    CalculationHistory.add_calculation(Calculation(Decimal('20'), Decimal('3'), 'subtract'))
 
 def test_add_calculation(setup_calculations):
     """Test adding a calculation to the history."""
@@ -45,4 +43,14 @@ def test_clear_history(setup_calculations):
     # Clear the calculation history.
     CalculationHistory.clear_history()
     # Assert that the history is empty by checking its length.
-    assert len(Calculation.get_history()) == 0, "History was not cleared"
+    assert len(CalculationHistory.get_history()) == 0, "History was not cleared"
+
+def test_get_latest(setup_calculations):
+    """Test getting the latest calculation from the history."""
+    # Retrieve the latest calculation from the history.
+    latest = CalculationHistory.get_latest()
+    # Assert that the latest calculation matches the expected values,
+    # specifically the operands and operation used in the last added calculation
+    # in the setup_calculations fixture.
+    assert latest.a == Decimal('20') and latest.b == Decimal('3'), "Did not get the correct latest calculation"
+    

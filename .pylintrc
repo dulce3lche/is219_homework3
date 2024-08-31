@@ -16,7 +16,7 @@ disable= unused-argument,
 output-format=colorized
 
 # Include a report at the end of the log
-reports=yes
+reports=no
 
 # Put a full report at the end of the file
 report-full=no
@@ -42,7 +42,7 @@ variable-rgx=[a-z_][a-z0-9_]{0,30}$
 function-rgx=[a-z_][a-z0-9_]{2,50}$
 
 # Argument names should be lowercase, with words separated by underscores as necessary to improve readability
-argument-rgx=[a-z_][a-z0-9_]{1,30}$
+#argument-rgx=[a-z_][a-z0-9_]{1,30}$
 
 # Method names should be lowercase, with words separated by underscores as necessary to improve readability
 method-rgx=[a-z_][a-z0-9_]{2,50}$
@@ -51,4 +51,3 @@ method-rgx=[a-z_][a-z0-9_]{2,50}$
 module-rgx=[a-z_][a-z0-9_]{1,30}$
 
 # Class names
-
